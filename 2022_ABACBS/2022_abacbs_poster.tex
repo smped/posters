@@ -7,15 +7,18 @@
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 \usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage{adjustbox}
 \usepackage{enumitem}
-\usepackage[backend=bibtex,style=numeric]{biblatex}
+\usepackage[backend=bibtex,style=numeric,doi=false,url=false,eprint=false,sorting=none]{biblatex}
 \usepackage{uofa-theme}
-\usetikzlibrary{positioning}
+\usetikzlibrary{positioning,shapes,arrows}
 
 \usepackage{mwe} % for placeholder images
 
 \addbibresource{ref.bib}
+\AtBeginBibliography{\footnotesize}
 
 % set theme parameters
 \tikzposterlatexaffectionproofoff
@@ -23,10 +26,10 @@
 \usecolorstyle{UofAStyle}
 
 \title{GRAVI: Gene Regulatory Analysis Using Variable Inputs}
-\author{\textbf{Stephen M Pederson}\textsuperscript{1, 2}, Geraldine Laven-Law\textsuperscript{1}, Richard Iggo\textsuperscript{1,3}, Amy Dwyer\textsuperscript{1}, Theresa E Hickey\textsuperscript{1} and \newline Wayne D Tilley\textsuperscript{1}}
+\author{\centering \textbf{Stephen M Pederson}\textsuperscript{1,2}, Geraldine Laven-Law\textsuperscript{1}, Richard Iggo\textsuperscript{1,3}, Amy Dwyer\textsuperscript{1}, Theresa E Hickey\textsuperscript{1} and Wayne D Tilley\textsuperscript{1}}
 \institute{
   \textsuperscript{1}Dame Roma Mitchell Cancer Research Laboratories, Adelaide Medical School, University of Adelaide\\
-  \textsuperscript{2}Black Ochre Data Laboratories, Telethon Kids Institute\\
+  \textsuperscript{2}Black Ochre Data Laboratories, Telethon Kids Institute\\[2mm]
   \textsuperscript{3}Bordeaux Institute of Oncology, University of Bordeaux
 }
 %\titlegraphic{\includegraphics[width=0.1\textwidth]{UoA-standard-vert-rgb.jpg}}
@@ -35,65 +38,136 @@
 \begin{document}
 \maketitle
 
-\node [below right=2cm and 2cm] at (bottomleft |- topright) {\includegraphics[width=0.1\textwidth]{UoA-standard-vert-rgb.jpg}};
-\node [below left=2cm and 2cm] at (topright) {\includegraphics[width=0.1\textwidth]{UoA-standard-vert-rgb.jpg}};
+\node [below right=15mm and 2cm] at (bottomleft |- topright) {\includegraphics[width=0.09\textwidth]{UoA-standard-vert-rgb.jpg}};
+\node [below left=15mm and 2cm] at (topright) {\includegraphics[width=0.09\textwidth]{tki.jpg}};
+
 
 
 \centering
 \begin{columns}
     \column{0.32}
-    \block{An Important Problem}{
-         We wish to extend the results of \cite{cite:0} to polytopes. A central problem in rational Lie theory is the description of systems. Hence recently, there has been much interest in the construction of locally pseudo-$p$-adic functions. In contrast, I. Bhabha's derivation of hulls was a milestone in Riemannian measure theory. Thus this could shed important light on a conjecture of Cartan. Next, the goal of the present paper is to compute arrows. Here, maximality is trivially a concern. In this setting, the ability to examine Cauchy points is essential. Hence every student is aware that $\| \tilde{L} \| < e$. Every student is aware that $h$ is admissible. 
+    \block{Aim: Identification of Key Regulatory Targets}{
+    
+	    The GRAVI workflow was built to integrate ChIP-Seq, HiC, RNA-Seq and Histone marks to identify key regulatory targets.
+	    The workflow was designed specifically for \textbf{multiple transcription factors to discover shared regulatory targets} in response to treatment and is available from \texttt{www.github.com/steveped/GRAVI}\\[-5mm]
+	    
+	    The motivating question was the joint response of the Androgen Receptor (AR) and Estrogen Receptor (ER) in response to DHT-treatment, across multiple cell lines combined with changes to the histone mark H3K27ac.
+	    This research currently offers an exciting new therapeutic approach to ER$^+$ breast cancer\cite{Hickey2021}.
+
     }
-    \block{Model}{
-         In \cite{cite:2}, the main result was the derivation of smoothly meager groups. This leaves open the question of integrability. Recent developments in descriptive topology \cite{cite:2} have raised the question of whether $\| \mathbf{{j}} \| = i$. The work in \cite{cite:3} did not consider the finitely solvable case. H. Turing \cite{cite:4} improved upon the results of T. Boole by computing ultra-contravariant arrows. Here, associativity is obviously a concern. Recent developments in introductory Galois analysis \cite{cite:5} have raised the question of whether 
-         
-         \begin{align*} 
-            A \left( {G_{\mu,\Xi}},-\emptyset \right) & \ge \left\{ i^{-4} \colon \beta^{-1} \left( L^{-5} \right) = \int_{\mathbf{{m}}} \bigcap_{\varphi \in u}  \frac{1}{\| \Delta \|} \,d \mathfrak{{c}} \right\} \\ & \supset \left\{ C^{4} \colon {\Theta_{\mathfrak{{h}}}} \left( e \cdot \Lambda, \dots, \zeta \right) \ne \sum_{{\mathfrak{{v}}_{\mathbf{{y}}}} \in A}  \sin^{-1} \left( \frac{1}{L} \right) \right\} \\ & \ne \Delta \left( \Psi ( j ), \dots, \| {\mathscr{{N}}^{(s)}} \| \right) \cdot {\mathfrak{{\ell}}_{c}}^{-1} \left( {\mu^{(\omega)}} \right) .
-         \end{align*}
-         
-         Is it possible to characterize isomorphisms? In \cite{cite:0,cite:4}, it is shown that $| {\mathfrak{{r}}_{u}} | \ge c$. Next, we wish to extend the results of \cite{cite:2} to finite matrices. Here, connectedness is obviously a concern. Therefore the groundbreaking work of L. Z. M\"obius on regular arrows was a major advance. Now every student is aware that $t$ is solvable. The groundbreaking work of K. Monge on ultra-hyperbolic hulls was a major advance. Hence a {}useful survey of the subject can be found in \cite{cite:0}. Moreover, this could shed important light on a conjecture of Cartan. I. Miller \cite{cite:4} improved upon the results of E. Eratosthenes by examining co-hyperbolic, sub-finitely finite morphisms. 
+    \block{GRAVI Outline}{
+	    The GRAVI workflow is written in \texttt{snakemake} and produces a set of linked \texttt{html} pages with all code visible and all results presented clearly in a manner inspired by the \texttt{workflowr} package\cite{workflowr}.
+	    This makes for completely reproducible results which are comparable across multiple datasets (e.g. multiple cell lines or tissues), and are easily accessible for collaborators.
+	    The minimal input is one ChIP-Seq target across two conditions with the following steps always performed:\\[-8mm]
+    
+    	\begin{enumerate}[itemsep=0mm]
+    		\item Prepare Annotations
+    		\item Identify Consensus Peaks
+    		\item Identify Differentially Bound Regions
+    	\end{enumerate}
+
+        \begin{tikzfigure}[\textbf{GRAVI Outline} ChIP-Seq inputs are shown in green]
+        	\includegraphics[width=0.78\linewidth]{GRAVI_Diagram-crop}
+        \end{tikzfigure}
+    	
+    	Incorporation of multiple ChIP targets will enable \textbf{pairwise comparisons} to be performed on differential binding results to find shared responsive regulatory regions.
+    	Likewise the addition of results from RNA-Seq analyses will provide direct evidence of changed gene expression from treatment responsive regulatory regions.
+    	Pathway enrichment is performed within each step of the analysis, with the workflow being heavily dependent on the \texttt{extraChIPs} Bioconductor package\cite{extraChIPs}.
+    
+
     }
-    \block{Inverse Problem}{
-        In \cite{cite:5}, the main result was the description of canonically $z$-invariant isometries. Is it possible to describe almost countable subsets? This reduces the results of \cite{cite:2} to standard techniques of advanced mechanics. This reduces the results of \cite{cite:3} to results of \cite{cite:1}. Hence this could shed important light on a conjecture of Weil. Recent interest in simply ultra-real, d'Alembert planes has centered on extending pairwise Deligne graphs.
-        
-        \begin{equation}
-            \min_{\mathbf{X} \in \mathbb{R}^{M\times N}} \big\lVert \mathbf{Y} - \mathbf{A}\mathbf{X} \big\rVert_{F}^{2}.
-            \label{eq:1}
-        \end{equation}
-        
-        It is well known that every unconditionally Noetherian set is smoothly stochastic. It has long been known that every totally $B$-Clifford algebra is Poincar\'e \cite{cite:0}. So is it possible to examine partially Fermat ideals? Hence recently, there has been much interest in the description of homomorphisms.
+    \block{Annotation Preparation}{
+    A set of \textit{non-overlapping genomic regions} is defined for the specific annotations utilised, and incorporating all \textbf{transcript-level} information with genomic distances defined by the user.
+    Regions are defined as 1) Promoter, 2) Upstream Promoter, 3)Exon, 4) Intron, 5) Proximal Intergenic, and 6) Distal Intergenic.
+    The relationship between defined regions and any provided genomic features (e.g. H3K27ac) data or any long-range interactions (e.g. HiC) is also assessed.
+    Standardised colour schemes are also defined for propagation through the workflow.
     }
 
     \column{0.36}
-    \block{Results}{
-        The goal of the present paper is to extend nonnegative numbers. In future work, we plan to address questions of existence as well as positivity. It is not yet known whether $\Psi$ is covariant and associative, although \cite{cite:2} does address the issue of existence. This could shed important light on a conjecture of Kovalevskaya. In \cite{cite:0}, it is shown that \begin{align*} q^{-3} & \le \frac{\overline{\sqrt{2}-\emptyset}}{\tilde{\omega} \left( e, \dots, \frac{1}{P ( A )} \right)} \wedge p \left( \bar{K}^{-5}, \tilde{m} \right) \\ & = \max_{B \to \emptyset}  1 \pm \dots \cup \pi \left(-q ( d ), \dots, \mathscr{{C}}'' \right)  \\ & \le \left\{ 1^{-7} \colon \cosh^{-1} \left(-\kappa \right) \le \max \int_{\hat{M}} \tanh \left( C^{5} \right) \,d \theta \right\} \\ & \le \prod  \cosh^{-1} \left( \pi^{-8} \right) + \dots \vee \omega \left(-\pi, \infty \sqrt{2} \right)  .\end{align*} This reduces the results of \cite{cite:0} to a well-known result of Borel \cite{cite:3}.
-        
-        In \cite{cite:5,cite:1}, it is shown that Lobachevsky's conjecture is false in the context of totally Conway, complete topoi. Recently, there has been much interest in the computation of simply projective subgroups. This could shed important light on a conjecture of Cauchy.
-        \vspace{1em}
-        \begin{tikzfigure}[Big fancy graphic.]
-            \includegraphics[width=0.9\linewidth]{example-image}
+    \block{Peak Calling}{
+    	
+    	Macs2 callpeak\cite{macs2} is used for identifying peaks within individual replicates and across all replicates within a treatment group.
+    	QC on each sample is performed identifying using common metrics such as FRIP with the relationship between all samples assessed using UpSet Plots and VennDiagrams.
+    	Consensus peaks are identified with treatment groups and across all samples with all regions exported as \texttt{bed} files.\\[-5mm]
+    	
+        \begin{tikzfigure}[Example outputs for ER binding showing all samples as an UpSet plots, common consensus peaks  and the genomic distribution.]
+        	\includegraphics[width=0.35\linewidth]{all-reps-upset-1}
+        	\hfill
+        	\includegraphics[width=0.25\linewidth]{ER_common_peaks}
+        	\hfill
+        	\includegraphics[width=0.3\linewidth]{plot-region-overlap-1}
         \end{tikzfigure}
-        \vspace{1em}
-        It was Levi-Civita--Littlewood who first asked whether essentially negative definite paths can be computed. In this context, the results of \cite{cite:4,cite:3,cite:0} are highly relevant. Here, existence is clearly a concern. Hence in \cite{cite:5}, the authors characterized primes. Now is it possible to derive pairwise empty equations? Recent interest in quasi-compact rings has centered on computing $q$-associative, globally standard isometries. Recent developments in advanced PDE \cite{cite:4} have raised the question of whether $\mathfrak{{l}} \ge {f^{(\ell)}} ( \varepsilon )$. Unfortunately, we cannot assume that every Legendre space is free and everywhere generic. It is essential to consider that $y$ may be bounded. Let us suppose ${\mathscr{{K}}_{\mathscr{{M}}}} = \| S \|$.  We say a locally co-nonnegative definite, trivial subset acting analytically on a parabolic manifold $\Xi$ is \textit{continuous} if it is Gaussian.
+    	
+    }
+    \block{Differential Binding}{
+    	Differential Binding analysis is performed using sliding windows\cite{csaw} then converting retained windows to \texttt{logCPM} values and normalising using Smooth-Quantile Normalisation\cite{sqn} (Figure \ref{fig:logCPM}) and assessing differential binding using \texttt{limma-trend}\cite{voom}.
+    	A range-based $H_0$\cite{treat} is used with the default set to a change in binding $<20$\% being not of interest.
+    	Representative windows for a combined region are chosen based on the window with maximal signal.
+    	Before final p-value adjustment, weighted p-values are calculated using Independent Hypothesis Weighting using either 1) Genomic Region, 2) External Features or 3) Detection of additional targets (Figure \ref{fig:ihw}).
+    	The p-value adjustment method and significance threshold are able to be specified by the user in an experiment-wide manner.
+    	Standard sets of result tables are produced as interactive tables, along with MA-plots, profile heatmaps and genomic distributions etc.\\
+    	
+		\begin{minipage}{0.5\linewidth}
+			\centering
+	    	\begin{tikzfigure}[Example showing logCPM values for AR before and after Smooth Quantile Normalisation. AR is primarily cytoplasmic under E2 then shifts to be nuclear under E2+DHT\label{fig:logCPM}]
+	        	\includegraphics[width=0.9\linewidth]{plot-logcpm-densities-1}
+	        \end{tikzfigure}		
+		\end{minipage}
+  		\begin{minipage}{0.5\linewidth}
+  			\centering
+           \begin{tikzfigure}[Partitioned p-values for the GATA3 binding response to DHT based on co-detection of the additional ChIP targets AR and ER.\label{fig:ihw}]
+	        	\includegraphics[width=0.8\linewidth]{plot-ihw-pvals-1}
+    	    \end{tikzfigure}	
+    	\end{minipage}
+    	
+    	\vspace{8mm}
+    	All regions are mapped to genes using \texttt{extraChIPs::mapByFeature()} which maps sites to genes based on which feature type it overlaps.
+    	\textbf{Any long-range interactions provided are used to provide more comprehensive mappings} at this point.
+    	If \textbf{RNA-Seq} results are provided an additional step is performed assessing the relationship between differentially expressed (DE) genes and any binding sites, directly identifying candidate sites with an observed response at the RNA level.
+    	Pathway enrichment analysis is also performed with and without RNA-Seq data.
+
+    	
     }
 
     \column{0.32}
-    \block{Comparison}{
-        Recent developments in symbolic group theory \cite{cite:0} have raised the question of whether $\mathscr{{J}} \le I$. The groundbreaking work of Q. Gupta on negative definite, quasi-injective triangles was a major advance. Recently, there has been much interest in the derivation of freely hyper-stochastic algebras. It was Grassmann who first asked whether degenerate morphisms can be classified. In \cite{cite:4}, the main result was the derivation of sub-analytically degenerate classes. Unfortunately, we cannot assume that $\mathfrak{{\ell}} ( \mathfrak{{z}}' ) \ne \| {\varepsilon_{\xi}} \|$.
-        
-        \begin{tikzfigure}[Look, my method is better.]
-            \includegraphics[width=0.5\linewidth]{example-image}
-        \end{tikzfigure}
+    \block{Pairwise Comparisons}{
+		Given prior rigour in statistical testing, comparison across pairs of factors becomes more of a \textit{site classification problem}.
+		When a site is found to be responsive for one transcription factor a lower p-value threshold is applied to the second factor in any overlapping sites, ensuring \textbf{unchanged sites are classified more accurately} as these are important in a pairwise analysis.
+		Each site is classified across both ChIP targets as \textit{Up, Down, Unchanged or Undetected} yielding a set of pairwise classifications.
+		Comparisons of changed binding (Figure \ref{fig:pairwise-logfc}) are generated across all sites, and separated by annotated region or external feature.
+		Profile heatmaps are also created (Figure \ref{fig:heatmap-ar-er}) and enrichment testing is performed on each set of regions.
+		Example sites for each set of regions are also plotted by default using \texttt{extraChIPs::plotHFGC()} (Figure \ref{fig:zbtb16}).
+		If RNA-Seq data is provided, an analysis of DE genes by pairwise changes in ChIP target binding is also performed (Figure \ref{fig:volcano})
+		
+		
+		\begin{minipage}{0.5\linewidth}
+			\centering
+           \begin{tikzfigure}[Pairwise logFC values for AR and ER broken down by externally provided H3K27ac-defined features.\label{fig:pairwise-logfc}]
+	        	\includegraphics[width=0.9\linewidth]{plot-dbwin-by-feature-1}
+    	    \end{tikzfigure}		
+		\end{minipage}
+  		\begin{minipage}{0.5\linewidth}
+  			\centering
+	    	\begin{tikzfigure}[Profile heatmap for sites showing increased binding for both AR and ER.\label{fig:heatmap-ar-er}]
+	        	\includegraphics[width=0.7\linewidth]{AR_Up_ER_Up_profile_heatmap}
+	        \end{tikzfigure}
+    	\end{minipage}\\[1cm]
+    	
+		\begin{minipage}{0.5\linewidth}
+			\centering
+           \begin{tikzfigure}[Binding site for \textit{ZBTB16} showing an increase in both AR and ER along with an increase in H3K27ac\label{fig:zbtb16}]
+	        	\includegraphics[width=0.8\linewidth]{AR_Up_ER_Up_AveExpr}
+    	    \end{tikzfigure}		
+		\end{minipage}
+  		\begin{minipage}{0.5\linewidth}
+  			\centering
+           \begin{tikzfigure}[DE Genes by AR and ER binding patterns. Here, the top row would be the most informative.\label{fig:volcano}]
+	        	\includegraphics[width=0.85\linewidth]{plot-volcano-1}
+    	    \end{tikzfigure}	
+    	\end{minipage}
+
     }
     
-    \block{Remarks}{
-        In \cite{cite:3}, the main result was the characterization of normal, orthogonal matrices. This could shed important light on a conjecture of Cardano--Pascal. In this context, the results of \cite{cite:2} are highly relevant. The work in \cite{cite:1} did not consider the countably minimal case. A {}useful survey of the subject can be found in \cite{cite:4}. Unfortunately, we cannot assume that $0 \cong \cosh x$.
-    }
-    
-    \block{Acknowledgements}{
-        Lorem ipsum dolor sit amet, probo dolorem cu vis. Cu mei audire fabulas scriptorem, cu has clita fabulas. Sea id veritus maiorum indoctum, mea cu assum cetero. Ei posse movet maluisset vim.
-    }
     
     \block{References}{
         \vspace{-1em}
