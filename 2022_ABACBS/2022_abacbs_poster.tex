@@ -11,6 +11,7 @@
 \usepackage{subcaption}
 \usepackage{adjustbox}
 \usepackage{enumitem}
+\usepackage{wrapfig}
 \usepackage[backend=bibtex,style=numeric,doi=false,url=false,eprint=false,sorting=none]{biblatex}
 \usepackage{uofa-theme}
 \usetikzlibrary{positioning,shapes,arrows}
@@ -29,7 +30,7 @@
 \author{\centering \textbf{Stephen M Pederson}\textsuperscript{1,2}, Geraldine Laven-Law\textsuperscript{1}, Richard Iggo\textsuperscript{1,3}, Amy Dwyer\textsuperscript{1}, Theresa E Hickey\textsuperscript{1} and Wayne D Tilley\textsuperscript{1}}
 \institute{
   \textsuperscript{1}Dame Roma Mitchell Cancer Research Laboratories, Adelaide Medical School, University of Adelaide\\
-  \textsuperscript{2}Black Ochre Data Laboratories, Telethon Kids Institute\\[2mm]
+  \textsuperscript{2}Black Ochre Data Laboratories, Telethon Kids Institute\hspace{5mm}
   \textsuperscript{3}Bordeaux Institute of Oncology, University of Bordeaux
 }
 %\titlegraphic{\includegraphics[width=0.1\textwidth]{UoA-standard-vert-rgb.jpg}}
@@ -38,8 +39,8 @@
 \begin{document}
 \maketitle
 
-\node [below right=15mm and 2cm] at (bottomleft |- topright) {\includegraphics[width=0.09\textwidth]{UoA-standard-vert-rgb.jpg}};
-\node [below left=15mm and 2cm] at (topright) {\includegraphics[width=0.09\textwidth]{tki.jpg}};
+\node [below right=10mm and 18mm] at (bottomleft |- topright) {\includegraphics[width=0.09\textwidth]{UoA-standard-vert-rgb.jpg}};
+\node [below left=10mm and 18mm] at (topright) {\includegraphics[width=0.09\textwidth]{tki.jpg}};
 
 
 
@@ -48,32 +49,47 @@
     \column{0.32}
     \block{Aim: Identification of Key Regulatory Targets}{
     
+    	\begin{minipage}{0.8\linewidth}
 	    The GRAVI workflow was built to integrate ChIP-Seq, HiC, RNA-Seq and Histone marks to identify key regulatory targets.
-	    The workflow was designed specifically for \textbf{multiple transcription factors to discover shared regulatory targets} in response to treatment and is available from \texttt{www.github.com/steveped/GRAVI}\\[-5mm]
+	    The workflow was designed specifically for \textbf{multiple transcription factors} to discover \textbf{shared regulatory targets which respond to a treatment} and is available from \texttt{www.github.com/steveped/GRAVI}.\\[-2mm]
+       	\end{minipage}
+       	\begin{minipage}{0.19\linewidth}
+	       	\begin{flushright}
+       		\includegraphics[width=0.9\linewidth]{qr-code}
+       		\vspace{15mm}	       	
+	       	\end{flushright}
+       	\end{minipage}
 	    
-	    The motivating question was the joint response of the Androgen Receptor (AR) and Estrogen Receptor (ER) in response to DHT-treatment, across multiple cell lines combined with changes to the histone mark H3K27ac.
-	    This research currently offers an exciting new therapeutic approach to ER$^+$ breast cancer\cite{Hickey2021}.
+	    The motivating question was the joint response of the Androgen Receptor (AR) and Estrogen Receptor (ER) in response to DHT-treatment across multiple cell lines, along with additional transcription factors such as GATA3 and changes to the histone mark H3K27ac.
+	    This research currently offers an exciting new therapeutic approach to ER$^+$ breast cancer\cite{Hickey2021}.\\
 
     }
     \block{GRAVI Outline}{
 	    The GRAVI workflow is written in \texttt{snakemake} and produces a set of linked \texttt{html} pages with all code visible and all results presented clearly in a manner inspired by the \texttt{workflowr} package\cite{workflowr}.
 	    This makes for completely reproducible results which are comparable across multiple datasets (e.g. multiple cell lines or tissues), and are easily accessible for collaborators.
-	    The minimal input is one ChIP-Seq target across two conditions with the following steps always performed:\\[-8mm]
+	    The minimal input is one ChIP-Seq target across two conditions with 1) Annotation Preparation, 2) Peak Calling, 3) Differential Binding being always performed.
     
-    	\begin{enumerate}[itemsep=0mm]
-    		\item Prepare Annotations
-    		\item Identify Consensus Peaks
-    		\item Identify Differentially Bound Regions
-    	\end{enumerate}
+%    	\begin{enumerate}[itemsep=0mm]
+%    		\item Prepare Annotations
+%    		\item Identify Consensus Peaks
+%    		\item Identify Differentially Bound Regions
+%    	\end{enumerate}
 
         \begin{tikzfigure}[\textbf{GRAVI Outline} ChIP-Seq inputs are shown in green]
         	\includegraphics[width=0.78\linewidth]{GRAVI_Diagram-crop}
         \end{tikzfigure}
+        \vspace{2mm}
     	
-    	Incorporation of multiple ChIP targets will enable \textbf{pairwise comparisons} to be performed on differential binding results to find shared responsive regulatory regions.
+
+    	Incorporation of multiple ChIP targets will enable \textbf{pairwise comparisons} to be performed on differential binding results to find shared responsive regulatory regions.%\\[2mm]
+%    	\begin{minipage}{0.8\linewidth}
     	Likewise the addition of results from RNA-Seq analyses will provide direct evidence of changed gene expression from treatment responsive regulatory regions.
-    	Pathway enrichment is performed within each step of the analysis, with the workflow being heavily dependent on the \texttt{extraChIPs} Bioconductor package\cite{extraChIPs}.
-    
+    	Pathway enrichment is performed within each step of the analysis, with the workflow being heavily dependent on the \texttt{extraChIPs} Bioconductor package\cite{extraChIPs}.\\
+%    	\end{minipage}
+%    	\begin{minipage}{0.15\linewidth}
+%	    	\centering
+%    		\includegraphics[width=0.7\linewidth]{extraChIPs_sticker}
+%    	\end{minipage}
 
     }
     \block{Annotation Preparation}{
@@ -131,13 +147,17 @@
 
     \column{0.32}
     \block{Pairwise Comparisons}{
+		\begin{wrapfigure}{r}{0.16\linewidth}
+			\centering
+			\includegraphics[width=0.9\linewidth]{extraChIPs_sticker}
+		\end{wrapfigure}    
 		Given prior rigour in statistical testing, comparison across pairs of factors becomes more of a \textit{site classification problem}.
 		When a site is found to be responsive for one transcription factor a lower p-value threshold is applied to the second factor in any overlapping sites, ensuring \textbf{unchanged sites are classified more accurately} as these are important in a pairwise analysis.
 		Each site is classified across both ChIP targets as \textit{Up, Down, Unchanged or Undetected} yielding a set of pairwise classifications.
 		Comparisons of changed binding (Figure \ref{fig:pairwise-logfc}) are generated across all sites, and separated by annotated region or external feature.
 		Profile heatmaps are also created (Figure \ref{fig:heatmap-ar-er}) and enrichment testing is performed on each set of regions.
 		Example sites for each set of regions are also plotted by default using \texttt{extraChIPs::plotHFGC()} (Figure \ref{fig:zbtb16}).
-		If RNA-Seq data is provided, an analysis of DE genes by pairwise changes in ChIP target binding is also performed (Figure \ref{fig:volcano})
+		If RNA-Seq data is provided, an analysis of DE genes by pairwise changes in ChIP target binding is also performed (Figure \ref{fig:volcano}).\\
 		
 		
 		\begin{minipage}{0.5\linewidth}
@@ -151,20 +171,20 @@
 	    	\begin{tikzfigure}[Profile heatmap for sites showing increased binding for both AR and ER.\label{fig:heatmap-ar-er}]
 	        	\includegraphics[width=0.7\linewidth]{AR_Up_ER_Up_profile_heatmap}
 	        \end{tikzfigure}
-    	\end{minipage}\\[1cm]
+    	\end{minipage}\\[8mm]
     	
 		\begin{minipage}{0.5\linewidth}
 			\centering
-           \begin{tikzfigure}[Binding site for \textit{ZBTB16} showing an increase in both AR and ER along with an increase in H3K27ac\label{fig:zbtb16}]
+           \begin{tikzfigure}[\textit{ZBTB16} is up-regulated, shows increased binding for both AR and ER, with an increase in H3K27ac signal\label{fig:zbtb16}]
 	        	\includegraphics[width=0.8\linewidth]{AR_Up_ER_Up_AveExpr}
     	    \end{tikzfigure}		
 		\end{minipage}
   		\begin{minipage}{0.5\linewidth}
   			\centering
            \begin{tikzfigure}[DE Genes by AR and ER binding patterns. Here, the top row would be the most informative.\label{fig:volcano}]
-	        	\includegraphics[width=0.85\linewidth]{plot-volcano-1}
+	        	\includegraphics[width=0.82\linewidth]{plot-volcano-1}
     	    \end{tikzfigure}	
-    	\end{minipage}
+    	\end{minipage}\\[5mm]
 
     }
     
