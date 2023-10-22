@@ -10,3 +10,6 @@
 *.synctex.gz
 *.toc
 *.ps
+.Rproj.user
+.Rhistory
+*.Rproj
