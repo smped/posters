@@ -70,15 +70,15 @@
 %}
 
 \begin{columns}
-    \column{0.32}
+    \column{0.34}
     	\block{Genomic Variability}{
 		\large
-        \begin{minipage}{0.7\linewidth}
+        \begin{minipage}{0.72\linewidth}
 		The Indigenous Australian population contains a large amount of unique genetic diversity.       
 				Given that risk factors are increasingly being shown to be polygenic and dependent on the genetic background. ignoring diversity in a large cohort may limit our ability to address this contribution. 
         \end{minipage}
         \hspace{5mm}
-        \begin{minipage}{0.22\linewidth}
+        \begin{minipage}{0.25\linewidth}
         \centering
         \small
         	\includegraphics[scale=1]{25_unique.png} \\
@@ -86,7 +86,7 @@
         \end{minipage}
         \vspace{1cm}
 		
-		The historical relationship between researchers and the Aboriginal community has been problematic and as such, this population is poorly represented in databases such as the 1000 Genomes Project (1000GP), and the Human Genome Diversity Project (HGDP).
+		The historical relationship between researchers and the Aboriginal community \textit{has been problematic	} and as such, this population is poorly represented in databases such as the 1000 Genomes Project (1000GP), and the Human Genome Diversity Project (HGDP).
 %		Prepared in a highly consultative, and indigenous-led manner, the PROPHECY study present a unique opportunity to provide access to precision medicine for members of the Indigenous Australian community.
 %		The unique design of the study also presents a unique opportunity to include population-level diversity across all -omics layers in the study.
 
@@ -128,7 +128,7 @@
     
 
 
-    \column{0.36}
+    \column{0.34}
     \useblockstyle{KeyBlockStyle}
     \block{The PROPHECY Study}{
     \Large
@@ -145,7 +145,7 @@
     \block{Haploid Reference Strategies}{
     \Large
     Haploid reference strategies are well understood\, making these the first starting point for adressing issues of unique diversity.
-    We are also exploring \textit{pan-genome, graph-based approaches}.\\[1cm]
+    We are also exploring \textit{pan-genome, graph-based approaches\autocite{Sibbesen2023-md}}.\\[1cm]
     
     
     
@@ -168,30 +168,30 @@
  
     \end{minipage}
     ~\\[1cm]
-    Strategies for modifying he reference include: 1) 1000GP consensus variants; 2) 1000GP AFR variants; 3) PROPHECY consensus variants and 4) personalised references.
-    \textit{Data sovereignty} with participants retaining control of their data is a key driver of these considerations!
+    Strategies for modifying the reference include: 1) 1000GP consensus variants; 2) 1000GP AFR variants; 3) PROPHECY consensus variants and 4) personalised references.
+    \textit{Data sovereignty} with participants retaining control of their data impacts which approaches are viable.
     \\
     
     Pilot samples will be assembled using Trinity and assemblies compared to variant-modifed references to assess the most appropriate strategy.
     	
     }
 
-    \column{0.32}
+    \column{0.33}
     \block{STAR Consensus Results}{
-    		\begin{minipage}{0.5\linewidth}
+    		\begin{minipage}{0.49\linewidth}
 	    		\large
 			6 Pilot Samples were aligned to hg38 along with the 1000GP-modified hg38.
-			Standard Differential Expression Analysis performed.
+			Standard DGE Analysis performed along with key explorations.\\
 			\begin{itemize}
-				\item \textbf{1 in 500 reads} were aligned to different locations
-				\item Direction of change\textbf{ was inconsistent} between samples
+				\item \textbf{1 in 500 reads} aligned to different locations
+				\item Direction of change \textbf{inconsistent} between samples
 				\item Some key genes were highly sensitive	
 			\end{itemize}
 		\end{minipage}
-		\begin{minipage}{0.45\linewidth}
+		\begin{minipage}{0.49\linewidth}
 			\centering
 			\includegraphics[scale=0.6]{sd-by-expr-1.png} 
-			\textit{\normalsize Variability in estimates plotted against average signal}\\[15mm]
+			\textit{\normalsize Variability against average signal}\\[15mm]
 		\end{minipage}
 
 		\vspace{1cm}		
@@ -204,14 +204,16 @@
 	
 	\block{Developing a Variant-Modified Reference Transcriptome}{
 	\large
-	\begin{minipage}{0.75\linewidth}
-		The R package \texttt{transmogR}	has now been developed for using variants to modify a standard reference trancriptome, including decoy transcripts\autocite{Srivastava2020-tm}.
-		This approach is coordinate-agnostic $\implies$ mapping back to regulatory features and GWAS results remains uncomplicated
-	\end{minipage}		
 	\begin{minipage}{0.2\linewidth}
 		\centering
 		\includegraphics[scale=1]{transmogR.png}
 	\end{minipage}
+	\begin{minipage}{0.75\linewidth}
+	\large
+		The R package \texttt{transmogR}	has now been developed for using variants to modify a standard reference trancriptome, including decoy transcripts\autocite{Srivastava2020-tm}.
+		This approach is coordinate-agnostic $\implies$ mapping back to regulatory features and GWAS results remains uncomplicated
+	\end{minipage}		
+
 	\vspace{1.5cm}
 	
 
