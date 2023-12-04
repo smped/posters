@@ -13,6 +13,8 @@
 \usepackage{enumitem}
 \usepackage{wrapfig}
 \usepackage{booktabs}
+\usepackage{pifont}
+\usepackage{array}
 \usepackage[backend=bibtex,style=numeric,doi=false,url=false,eprint=false,sorting=none,autocite=superscript]{biblatex}
 \usepackage{bodl}
 \usetikzlibrary{positioning,shapes,arrows}
@@ -80,7 +82,7 @@
         \centering
         \small
         	\includegraphics[scale=1]{25_unique.png} \\
-        	Genomic variants unique to Indigenous Australians
+        	Genomic variants unique to Indigenous Australians\autocite{Easteal2020-fo}
         \end{minipage}
         \vspace{1cm}
 		
@@ -141,8 +143,36 @@
     \useblockstyle{UofABlockStyle}
 
     \block{Haploid Reference Strategies}{
-    Develop a figure showing
-
+    \Large
+    Haploid reference strategies are well understood\, making these the first starting point for adressing issues of unique diversity.
+    We are also exploring \textit{pan-genome, graph-based approaches}.\\[1cm]
+    
+    
+    
+    \begin{minipage}{\linewidth}
+    \centering
+    \begin{tabular}{p{14cm}>{\centering\arraybackslash}p{9cm}>{\centering\arraybackslash}p{9cm}}
+    		\toprule
+    		& \multicolumn{2}{c}{Reference Type} \\
+    		\cline{2-3}
+    		& Genome & Transcriptome \\
+    		\midrule
+    		Gene-Level Analysis & \textcolor{BodlGreen}{\ding{52}} & \textcolor{BodlGreen}{\ding{52}} \\
+    		Transcript-Level Analysis\autocite{Baldoni2023-wm} & \textcolor{DarkRed}{\ding{54}} & \textcolor{BodlGreen}{\ding{52}} \\
+    		Alignment Co-Ordinates & \textcolor{BodlGreen}{\ding{52}} &  \textcolor{DarkRed}{\ding{54}}\\
+    		Alignment Visualisation & \textcolor{BodlGreen}{\ding{52}} &  \textcolor{DarkRed}{\ding{54}}\\
+    		Speed of Workflow & \textcolor{DarkRed}{\ding{54}} & \textcolor{BodlGreen}{\ding{52}} \\
+    		Storage Requirements & \textcolor{DarkRed}{\ding{54}} & \textcolor{BodlGreen}{\ding{52}} \\
+    		\bottomrule
+    \end{tabular}
+ 
+    \end{minipage}
+    ~\\[1cm]
+    Strategies for modifying he reference include: 1) 1000GP consensus variants; 2) 1000GP AFR variants; 3) PROPHECY consensus variants and 4) personalised references.
+    \textit{Data sovereignty} with participants retaining control of their data is a key driver of these considerations!
+    \\
+    
+    Pilot samples will be assembled using Trinity and assemblies compared to variant-modifed references to assess the most appropriate strategy.
     	
     }
 
@@ -168,7 +198,7 @@
 		\centering
 		\includegraphics[scale=0.75]{ma-by-variant-1.png} 
 		~\\
-		\textit{\normalsize Differential Gene Expression results showing genes which passed an FDR of 0.05 for consideration as differentially expressed}
+		\textit{\normalsize Differential Gene Expression results showing genes which passed an FDR of 0.05 for consideration as differentially expressed}\\[1cm]
 		
 	}
 	
@@ -182,7 +212,7 @@
 		\centering
 		\includegraphics[scale=1]{transmogR.png}
 	\end{minipage}
-	\vspace{1cm}
+	\vspace{1.5cm}
 	
 
     \coloredbox{
